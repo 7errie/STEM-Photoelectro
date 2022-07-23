@@ -2,6 +2,7 @@
   "name": "stem-photoelectro",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "version": "1.0.0",
+  "homepage": "https://7errie.github.io/stem-photoelectro",
   "main": "index.js",
   "dependencies": {
     "gh-pages": "^4.0.0",
@@ -18,12 +19,12 @@
     "styled-components": "^5"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,6 @@
   "bugs": {
     "url": "https://github.com/7errie/stem-photoelectro/issues"
   },
-  "homepage": "https://7errie.github.io/stem-photoelectro",
   "browserslist": {
     "production": [
       ">0.2%",
