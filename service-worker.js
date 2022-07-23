@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/7errie/STEM-Photoelectro/precache-manifest.ae6246d45a225f7c8237afd509f5e2f3.js"
+  "/STEM-Photoelectro/precache-manifest.87cfa2777ce5ee5e79025c24ef536191.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/7errie/STEM-Photoelectro/index.html", {
+workbox.routing.registerNavigationRoute("/STEM-Photoelectro/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
