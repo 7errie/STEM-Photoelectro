@@ -1,16 +1,16 @@
 {
-  "main.css": "/STEM-Photoelectro/static/css/main.3f1d31b5.chunk.css",
-  "main.js": "/STEM-Photoelectro/static/js/main.f18fd1ea.chunk.js",
-  "main.js.map": "/STEM-Photoelectro/static/js/main.f18fd1ea.chunk.js.map",
-  "runtime~main.js": "/STEM-Photoelectro/static/js/runtime~main.5ec1f370.js",
-  "runtime~main.js.map": "/STEM-Photoelectro/static/js/runtime~main.5ec1f370.js.map",
-  "static/js/2.29cbae75.chunk.js": "/STEM-Photoelectro/static/js/2.29cbae75.chunk.js",
-  "static/js/2.29cbae75.chunk.js.map": "/STEM-Photoelectro/static/js/2.29cbae75.chunk.js.map",
-  "static/js/3.9f01db21.chunk.js": "/STEM-Photoelectro/static/js/3.9f01db21.chunk.js",
-  "static/js/3.9f01db21.chunk.js.map": "/STEM-Photoelectro/static/js/3.9f01db21.chunk.js.map",
-  "index.html": "/STEM-Photoelectro/index.html",
-  "precache-manifest.d62a44506d8f77d86452342f50aaf504.js": "/STEM-Photoelectro/precache-manifest.d62a44506d8f77d86452342f50aaf504.js",
-  "service-worker.js": "/STEM-Photoelectro/service-worker.js",
-  "static/css/main.3f1d31b5.chunk.css.map": "/STEM-Photoelectro/static/css/main.3f1d31b5.chunk.css.map",
-  "static/media/error-404.svg": "/STEM-Photoelectro/static/media/error-404.34e4e4e0.svg"
+  "files": {
+    "main.css": "/STEM-Photoelectro/static/css/main.4f1ed81d.css",
+    "main.js": "/STEM-Photoelectro/static/js/main.883ed6c8.js",
+    "static/js/787.a11e83eb.chunk.js": "/STEM-Photoelectro/static/js/787.a11e83eb.chunk.js",
+    "static/media/error-404.svg": "/STEM-Photoelectro/static/media/error-404.423bd38510603b284c07eac7997e3275.svg",
+    "index.html": "/STEM-Photoelectro/index.html",
+    "main.4f1ed81d.css.map": "/STEM-Photoelectro/static/css/main.4f1ed81d.css.map",
+    "main.883ed6c8.js.map": "/STEM-Photoelectro/static/js/main.883ed6c8.js.map",
+    "787.a11e83eb.chunk.js.map": "/STEM-Photoelectro/static/js/787.a11e83eb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f1ed81d.css",
+    "static/js/main.883ed6c8.js"
+  ]
 }
