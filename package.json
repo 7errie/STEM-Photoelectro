@@ -27,13 +27,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/7errie/STEM-Photoelectro.git"
+    "url": "git+https://github.com/7errie/stem-photoelectro.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/7errie/STEM-Photoelectro/issues"
+    "url": "https://github.com/7errie/stem-photoelectro/issues"
   },
   "homepage": "https://7errie.github.io/stem-photoelectro",
   "browserslist": {
