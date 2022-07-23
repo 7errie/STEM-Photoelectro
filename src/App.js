@@ -1,13 +1,13 @@
 import "./App.css";
 import React, { Component } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./pages/MainPage";
 
 class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename={window.location.pathname || ''}>
         <Routes>
           <Route exact path="/" element={ <Main /> } />
         </Routes>
