@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/STEM-Photoelectro/precache-manifest.87cfa2777ce5ee5e79025c24ef536191.js"
+  "/STEM-Photoelectro/precache-manifest.d62a44506d8f77d86452342f50aaf504.js"
 );
 
 workbox.clientsClaim();
