@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/stem-photoelectro/static/css/main.4f1ed81d.css",
-    "main.js": "/stem-photoelectro/static/js/main.3c37afbc.js",
+    "main.js": "/stem-photoelectro/static/js/main.68142d22.js",
     "static/js/787.a11e83eb.chunk.js": "/stem-photoelectro/static/js/787.a11e83eb.chunk.js",
     "static/media/error-404.svg": "/stem-photoelectro/static/media/error-404.423bd38510603b284c07eac7997e3275.svg",
     "index.html": "/stem-photoelectro/index.html",
     "main.4f1ed81d.css.map": "/stem-photoelectro/static/css/main.4f1ed81d.css.map",
-    "main.3c37afbc.js.map": "/stem-photoelectro/static/js/main.3c37afbc.js.map",
+    "main.68142d22.js.map": "/stem-photoelectro/static/js/main.68142d22.js.map",
     "787.a11e83eb.chunk.js.map": "/stem-photoelectro/static/js/787.a11e83eb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4f1ed81d.css",
-    "static/js/main.3c37afbc.js"
+    "static/js/main.68142d22.js"
   ]
 }
