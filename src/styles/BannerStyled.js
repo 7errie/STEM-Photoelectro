@@ -8,7 +8,7 @@ export const BannerDiv = styled.nav`
   justify-content: center;
   align-items: center;
   font-size: 12px;
-  line-height: 1em;
+  line-height: 4em;
   position: sticky;
   top: 0;
   z-index: 11;
@@ -21,18 +21,20 @@ export const BannerDiv = styled.nav`
 export const BannerContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 30px;
+  height: 70px;
   z-index: 1;
   width: 100%;
   padding-top: .75em;
   max-width: 1100px;
 `;
 
-export const BannerText = styled.div`
-  display: block;
-  font-family: Open Sans,Arial,sans-serif;
-  font-weight: 500;
-  padding-bottom: .75em;
+export const BannerText = styled.h1`
+  font-size: 70px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, #5c001e 80%, #e3a133);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 `;
 
 export const MobileIcon = styled.div`

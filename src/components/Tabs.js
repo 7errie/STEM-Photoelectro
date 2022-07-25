@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  TabsContainer, TabsRow, Button, Content, TabContent, SimulationButton
+  TabsContainer, TabsRow, Button, Content, TabContent, SimulationTab, SimulationButton
 } from "../styles/TabsStyled";
 import { tabObjDefault, tabObjOne, tabObjTwo, tabObjThree } from "../Data";
 
@@ -19,7 +19,7 @@ const TabsComponent = () => {
           ))}
         </TabsRow>
         <Content>
-          <TabContent active={active}>{active === null ? tabObjOne.content : active === 0 ? tabObjOne.content : active === 1 ? tabObjTwo.content : active === 2 ? <SimulationButton onClick={() => window.open(tabObjThree.buttonLink, "_blank")}>{tabObjThree.buttonLabel}</SimulationButton> : tabObjDefault.content}</TabContent>
+          <TabContent active={active}>{active === null ? tabObjOne.content : active === 0 ? tabObjOne.content : active === 1 ? tabObjTwo.content : active === 2 ? <SimulationTab><SimulationButton onClick={() => window.open(tabObjThree.buttonLink, "_blank")}>{tabObjThree.buttonLabel}</SimulationButton></SimulationTab> : tabObjDefault.content}</TabContent>
         </Content>
     </TabsContainer>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { rgba } from "polished";
 
 export const HeaderDiv = styled.nav`
   background: #5c001e;
@@ -29,8 +30,9 @@ export const HeaderContainer = styled.div`
 
 export const CInfo = styled.div`
   display: block;
+  color: ${rgba("white", 0.85)};
   font-family: Open Sans,Arial,sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   padding-bottom: .75em;
 `;
 

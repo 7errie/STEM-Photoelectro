@@ -51,9 +51,12 @@ export const Button = styled.button`
   padding: 15px;
   text-align: center;
   width: 50%;
-  background: ${(p) => (p.active === 0 ? rgba("gray", 0.075) : rgba("white", 0.25))};
+  background: ${(p) => (p.active === true ? rgba("white", 0.85) : rgba("#5c001e", 1))};
+  color: ${(p) => (p.active === true ? rgba("black", 0.85) : rgba("white", 0.85))};
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
-  border-bottom: ${(p) => (p.active === 0 ? rgba("black", 0.25) : "transparent")};
+  border-bottom: ${(p) => (p.active === 0 ? rgba("black", 0.75) : "transparent")};
   box-sizing: content-box;
   position: relative;
   outline: none;
@@ -71,11 +74,15 @@ export const TabContent = styled.div`
   display: ${(p) => (p.active ? "block" : "null")};
 `;
 
-export const SimulationButton = styled.button`
-  display: block;
+export const SimulationTab = styled.div`
+  display: flex;
   justify-content: center;
-  background-color: ${rgba("black", 0.75)};
-  margin: 50px 450px;
+  position: sticky;
+  margin: 20px 0px;
+`;
+
+export const SimulationButton = styled.button`
+  background-color: ${rgba("black", 0.25)};
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
