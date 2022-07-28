@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sine Wave</title>
+    <script type="text/javascript">
+        var state = false;
+        var move_state = false;
+        var b_on;
+        var b_off;
+        function wavefunction(){
+            
+            
+            if(!move_state){
+                light_wave1();
+                move_state = true;
+                var delay_time = 6700;
+                const mediaQuery = window.matchMedia('(max-width: 1280px)')
+                if (mediaQuery.matches) {
+                    delay_time  = 3000;
+                }
+                setTimeout(()=>{
+                movingInteval = setInterval(()=>{
+                        leftPos += 1
+                        document.getElementById('canvas').style.transform = 'translate(' + leftPos * -1+'px)'
+                    },31.8)
+                },delay_time)
+            }
+            state = !state;
+            var light_id = document.getElementById('light_change');
+	        var bubble_id = document.getElementById('light_change');
+            console.log(state);
+            if(state == true){
+              document.getElementById('switch').src = "img/5.png";
+              document.getElementById('switch').style.marginLeft = "-87vw"
+              const mediaQuery = window.matchMedia('(max-width: 1280px)')
+              if (mediaQuery.matches) {
+                    document.getElementById('switch').style.marginLeft = "-87.2vw"
+                }
+              const mediaQuery1 = window.matchMedia('(max-width: 1024px)')
+              if (mediaQuery1.matches) {
+                    document.getElementById('switch').style.marginLeft = "-87vw"
+                }
+            }
+            else{
+              document.getElementById('switch').src = "img/7.png";
+              document.getElementById('switch').style.marginLeft = "-86.6vw"
+              const mediaQuery = window.matchMedia('(max-width: 1280px)')
+              if (mediaQuery.matches) {
+                    document.getElementById('switch').style.marginLeft = "-87vw"
+                }
+              const mediaQuery1 = window.matchMedia('(max-width: 1024px)')
+              if (mediaQuery1.matches) {
+                    document.getElementById('switch').style.marginLeft = "-86.7vw"
+                }
+            }
+
+            if(state == true){
+                light_onchange();
+                // light_wave1();
+
+            }
+            else
+                light_offchange();
+
+        }
+        function light_onchange(){
+            clearTimeout(b_off);
+            var light_id = document.getElementById('light_change');
+	        var bubble_id = document.getElementById('bubble_change');
+            const img_array = ['img/6.png', 'img/2.png', 'img/3.png', 'img/4.png'];
+            // const bubble_array = ['img/no.png', 'img/appear.gif', 'img/active.gif'];
+            let bubble_array=[];
+            let url=window.location.href.split('/');
+            url.pop();
+            url=url.join("/");
+            // console.log(window);
+            // console.log(bubble_id,bubble_id.src,bubble_id.src=="img/disappear.gif");
+            if(bubble_id.src== url+"/img/disappear.gif"){
+            bubble_array = ['img/active.gif','img/active.gif'];
+            }
+            else{
+            bubble_array = ['img/no.png', 'img/appear.gif', 'img/active.gif'];
+            }
+            var count = 0;
+	        var i = 0;
+            turn_on();
+	        bubble_on();
+
+            isFinished = false;
+            isHorizontal = false;
+
+            function turn_on(){
+                if(count < img_array.length-1){
+                    count ++;
+                    // console.log(count);
+                    light_id.src = img_array[count];
+		    
+                    setTimeout(turn_on, 400/4);
+                }
+
+            }
+
+	    function bubble_on(){
+                
+
+		if(i < bubble_array.length-1){
+                    i ++; 
+		    bubble_id.src = bubble_array[i];
+                    b_on = setTimeout(bubble_on, 11000/2);
+                }
+            }
+        }
+        function light_offchange(){ 
+            clearTimeout(b_on);		
+            var light_id = document.getElementById('light_change');
+	        var bubble_id = document.getElementById('bubble_change');
+            const img_array = ['img/6.png', 'img/2.png', 'img/3.png', 'img/4.png'];
+	        const bubble_array = ['img/no.png', 'img/disappear.gif'];
+            var count = 3;
+	        var i = 2;
+            turn_off();
+	        bubble_off();
+            isFinished = true;
+            setTimeout(()=>{
+                isHorizontal = true;
+                // clearInterval(movingInteval)
+            },500)
+
+             isFinished = true;
+
+            function turn_off(){
+
+                if(count >= 1){
+                    count --;
+                    console.log(count);
+                    light_id.src = img_array[count];
+                    setTimeout(turn_off, 400/4);
+
+                }  
+
+            }
+
+	    function bubble_off(){
+               if(i >= 1){
+                    i --;   
+		    bubble_id.src = bubble_array[i];
+                    b_off  = setTimeout(bubble_off, 20000/2);
+
+                }		
+
+            }
+            // light_wave1();
+        }
+    </script>
+    <style>
+        #canvas_div{
+            position: absolute;
+            overflow: hidden;transform: rotate(2.6deg);
+            background-color: #00000003;
+            width:225px;
+            height:500px;
+            margin-top: -32.8vw;
+            margin-left: 54.4vw;
+        }
+        #bubble_change
+        {
+            /* width: 13.8%;
+             margin-top: 11.8vw;
+             position: absolute;
+             margin-left: -77.8vw;*/
+        }
+        #light_change{
+            height: auto;
+            width: 33%;
+            margin-top: 1.5vw;
+            position: absolute;
+            margin-left: -98.5vw;
+        }
+        #switch{
+            height: 0.93vw;
+            width: 1%;
+            margin-top: 23.6vw;
+            position: absolute;
+            margin-left: -86.7vw;
+            cursor:pointer;
+        }
+        #volt_change{
+            height: 2%;
+            width: 2%;
+            margin-top: 26.5vw;
+            position: absolute;
+            margin-left: -89.4vw;
+            cursor:pointer;
+        }
+	@media screen and (min-width: 1281px){
+	    #bubble_change{
+             width: 13.8%;
+             margin-top: 14.5vw;
+             position: absolute;
+             margin-left: -77.1vw;
+        
+	    }
+	
+	}
+        @media screen and (max-width: 1280px){
+            #canvas_div{
+                width:156px;
+                height:500px;
+                margin-top: -32.8vw;
+                margin-left: 53.8vw;
+            }
+            #light_change{
+                margin-top:5.9vw;
+                margin-left:-98.9vw;
+            }
+            #switch{
+                margin-left:-87vw;
+            }
+	    #bubble_change{
+             width: 13.8%;
+             margin-top: 11.8vw;
+             position: absolute;
+             margin-left: -77.8vw;
+        
+	    }
+        }
+        @media screen and (min-width: 913px) and (max-width: 1024px){
+            #canvas_div{
+                width:125px;
+                height:500px;
+                margin-top: -37.5vw;
+                margin-left: 53.6vw;
+            }
+            #light_change{
+                margin-top:1vw;
+                margin-left:-98.6vw;
+            }
+            #switch{
+                margin-left:-86.7vw;
+            }
+	    #bubble_change{
+             width: 13.8%;
+             margin-top: 14.3vw;
+             position: absolute;
+             margin-left: -77.2vw;
+        }
+        }
+        @media screen and (max-width: 912px){
+            #canvas_div{
+		    width:125px;
+            height:500px;
+            margin-top:-38.2vw;
+		    margin-left: 53.6vw;
+            }
+	        #light_change{
+                margin-top:1vw;
+                margin-left:-98.6vw;
+            }
+            #switch{
+                margin-left:-86.7vw;
+            }
+	        #bubble_change{
+             width: 13.8%;
+             margin-top: 14.3vw;
+             position: absolute;
+             margin-left: -77.2vw;
+            }
+        }
+        .microscopic{
+            height: 5%;
+            width: 2%;
+            /*margin-top: 23.6vw;*/
+            position: absolute;
+            /*margin-left: -90.7vw;*/
+            cursor:pointer;
+
+        }
+        #microscopic1{
+            margin-top: 27.6vw;
+            margin-left: -74.3vw
+        }
+        #microscopic2{
+            margin-top: 27.6vw;
+            margin-left: -65.7vw
+        }
+        #microscopic3{
+            margin-top: 34.6vw;
+            margin-left: -70.7vw
+        }
+        #microscopic4{
+            margin-top: 24.6vw;
+            margin-left: -74.4vw
+        }
+        #microscopic5{
+            margin-top: 16.6vw;
+            margin-left: -79.6vw
+        }
+        #vid{
+            /*border-radius: 100%;*/
+            border: 1px solid;
+            margin-top: -100px;
+        }
+        #vid_div{
+            /*display:none;*/
+            position: fixed;
+            top: -600px;
+            left: 50%;
+            width: 372px;
+            background: lightgray;
+            border-radius: 100% 14%;
+            padding-left: 100px;
+        }
+        #vid_div_back{
+            /*display:none;*/
+            height: 100%;
+            width: 100%;
+            background: black;
+            position: fixed;
+            top: 0;
+            z-index: 0;
+            opacity: 0.4;
+        }
+        #microscopic_btn{
+            position: absolute;
+            top: 80%;
+            left: 20%;
+            background: #3d6db0;
+            color: white;
+            width: fit-content;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style=""> 
+        <img src="img/s.jpg" style="height: auto;width:100%;">
+        <img src="img/6.png" id="light_change" style="">
+	    <img src="img/no.png" id="bubble_change" style="">
+        <img src="img/7.png" id="switch" style="" onclick="wavefunction()">
+        <img src="img/8.png" class="microscopic" id="microscopic1" style="display:none;" onclick="vid_show(1)">
+        <img src="img/8.png" class="microscopic" id="microscopic2" style="display:none;" onclick="vid_show(2)">
+        <img src="img/8.png" class="microscopic" id="microscopic3" style="display:none;" onclick="vid_show(3)">
+        <img src="img/8.png" class="microscopic" id="microscopic4" style="display:none;" onclick="vid_show(4)">
+        <img src="img/8.png" class="microscopic" id="microscopic5" style="display:none;" onclick="vid_show(5)">
+        <img src="img/9.png" id="volt_change" style="">
+        <div id="canvas_div" style="">
+            <canvas id="canvas" width='4000' height='1000' style="height: 1000px;width: 4000px;position: absolute;"/>
+        </div>
+        <div id="vid_div_back" style="display:none;" onclick="vid_show(0)">
+        </div>
+        <div id="vid_div" style="display:none;" >
+            <video id="vid" width="400" height="400" src="img/movie.mp4" type="video/mp4" loop autoplay muted controls>
+                <!-- <source src="img/movie.mp4" type="video/mp4"> -->
+                <!-- <source src="img/movie.ogg" type="video/ogg"> -->
+                <!-- Your browser does not support the video tag. -->
+            </video>
+        </div>
+        <button type="button" id="microscopic_btn" onclick="microscopic_btn()">Microscopic View</button>
+      </div>
+    <script type="text/javascript">
+    let vid = document.getElementById("vid");
+    let vid_div = document.getElementById("vid_div");
+    let vid_div_back = document.getElementById("vid_div_back");
+    function microscopic_btn(){
+        console.log('hitting');
+        let elem=document.querySelectorAll('.microscopic');
+        // console.log(elem);
+        [].forEach.call(elem, function(el) {
+          // do whatever
+          console.log(el);
+          console.log(el.style.display);
+          // el.
+          if (el.style.display == "none") {
+            el.style.display = "initial";
+          } else {
+            el.style.display = "none";
+          }
+          // div.style.color = "red";
+        });
+        // elem.foreach((el)=>{console.log(el)});
+    }
+    // microscopic_btn();
+    function vid_show(el){
+        // $('#vid_div');
+        console.log(el,vid, vid_div);
+        let btn_el=el>0?document.getElementById('microscopic'+el).getBoundingClientRect():'';
+        // document.getElementById('microscopic1').getBoundingClientRect().left
+
+        if (vid_div.style.display === "none") {
+            vid_div.style.display = "block";
+            vid_div_back.style.display = "block";
+        } else {
+            vid_div.style.display = "none";
+            vid_div_back.style.display = "none";
+        }
+        if(el==0){
+            vid_div.style.top='0px';//'-600px';
+            vid_div.style.left='50%';
+            vid_div.style.borderRadius ='100% 14%';
+            vid_div.style.height='unset';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie.mp4";
+            vid.src = "img/movie.mp4";
+            vid.load();
+            vid.play();
+            // vid_div.getElementsByTagName('source')[1].src = "img/movie.ogg";
+        }
+        else if(el==1){
+            // console.log(el, document.getElementById('microscopic'+el).getBoundingClientRect().left);
+            vid_div.style.top=(btn_el.top-vid_div.offsetHeight+btn_el.height)+'px';//'-600px';
+            vid_div.style.left=btn_el.left+'px';//'25%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie1.mp4";
+            vid.src = "img/movie1.mp4";
+            vid.load();
+            vid.play();
+            // vid_div.getElementsByTagName('source')[1].src = "img/movie1.ogg";
+        }
+        else if(el==2){
+            vid_div.style.top=(btn_el.top-vid_div.offsetHeight+btn_el.height)+'px';//'-600px';
+            vid_div.style.left=btn_el.left+'px';//'34%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie2.mp4";
+            vid.src = "img/movie2.mp4";
+            vid.load();
+            vid.play();
+        }
+        else if(el==3){
+            // console.log(btn_el.top,vid_div.getBoundingClientRect().height);
+            vid_div.style.top=(btn_el.top-vid_div.offsetHeight+btn_el.height)+'px';//'-520px';
+            vid_div.style.left=btn_el.left+'px';//'29%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie3.mp4";
+            vid.src = "img/movie3.mp4";
+            vid.load();
+            vid.play();
+        }
+        else if(el==4){
+            vid_div.style.height='200px';
+            vid_div.style.borderRadius ='50% 50%';
+            vid_div.style.top=(btn_el.top-100)+'px';//'-575px';
+            vid_div.style.left=(btn_el.left+btn_el.width)+'px';//'38%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie4.mp4";
+            vid.src = "img/movie4.mp4";
+            vid.load();
+            vid.play();
+        }
+        else if(el==5){
+            vid_div.style.height='200px';
+            vid_div.style.borderRadius ='50% 50%';
+            vid_div.style.top=(btn_el.top-100)+'px';//'-575px';
+            vid_div.style.left=(btn_el.left+btn_el.width)+'px';//'20%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie5.mp4";
+            vid.src = "img/movie5.mp4";
+            vid.load();
+            vid.play();
+        }
+
+    }
+       var isHorizontal = false;
+       var movingInteval 
+       var isFinished = false;
+       // document.getElementById('canvas_div').style.transform = "rotate(-1deg)";
+       var c = document.getElementById("canvas");
+       // if(c != null){
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+
+            var x = 0;
+            var y = 0;
+
+            var lastPosX = 0;
+            var lastPostY = 180;
+
+            var leftPos = 0
+
+            function light_wave1(){
+              if(isFinished) {                
+                    console.log('isFinished')
+                    // if(!isHorizontal){
+                        // y =  (x- lastPosX)*0.9 ;
+                        if(y <= 140){
+                            ctx.moveTo(x, y);
+                            y++;
+                            x++;                             
+                            ctx.lineTo(x, y);
+                            ctx.lineWidth = 4;
+                            ctx.strokeStyle = "yellow";
+                            ctx.stroke();
+                            setTimeout(light_wave1, 30);    
+                            // lastPosX = x;
+                        } else {
+                            y = 140;
+                            ctx.moveTo(x, y);
+                            x++;
+                            ctx.lineWidth = 4;
+                            ctx.strokeStyle = "yellow";
+                            ctx.stroke();
+                            setTimeout(light_wave1, 30);
+                            lastPosX = x;
+                            console.log('lastPosX', lastPosX)  
+                        }
+                        
+                    // }
+                    // else {
+                    //     y = 400;
+                    //     ctx.moveTo(x, y);
+                    //     x++;
+                    //     ctx.lineWidth = 10;
+                    //     ctx.strokeStyle = "yellow";
+                    //     ctx.stroke();
+                    //     setTimeout(light_wave1, 1);
+
+                    //  }
+              }
+
+              else{
+
+                // firststep();
+                // function firststep(){
+
+                    if(x <=lastPosX + 1){
+                        y = 140;
+                        ctx.moveTo(x, y);
+                        x++;
+                        ctx.lineTo(x, y);
+                        ctx.lineWidth = 4;
+                        ctx.strokeStyle = "yellow";
+                        ctx.stroke();
+                        setTimeout(light_wave1, 30);
+                        console.log("x="+x);
+                        // lastPosX = x;
+                    } else if(x <= lastPosX + 20) {                        
+                        ctx.moveTo(x, y);
+                        x++;
+                        y += -1;
+                        ctx.lineTo(x, y);
+                        ctx.lineWidth = 4;
+                        ctx.strokeStyle = "yellow";
+                        ctx.stroke();
+                        setTimeout(light_wave1, 30);
+                        // lastPosX = x;                        
+                        lastPostY = y;
+                    } else {          
+                        ctx.moveTo(x, y);
+                        x++;
+                        ctx.lineTo(x, y);
+                        ctx.lineWidth = 4;
+                        ctx.strokeStyle = "yellow";
+                        ctx.stroke();                        
+                        if(state) {
+                            setTimeout(light_wave1, 30);    
+                        }
+                        // lastPosX = x
+                        
+                    // }
+                }
+                // lastPosX = x;
+                // console.log("x="+lastPosX);
+                // else if(x <=lastPosX  + 70 ){
+                //     y = 400 - (x-lastPosX-50)*5;
+                //     ctx.moveTo(lastPosX+50, y);
+                //     x++;
+                //     ctx.lineTo(x, y);
+                //     ctx.lineWidth = 10;
+                //     ctx.strokeStyle = "yellow";
+                //     ctx.stroke();
+                //     setTimeout(light_wave1, 0.1);
+
+                // }
+                // else {
+                //     y = 300;
+                //     ctx.moveTo(x, y);
+                //     x++;
+                //     ctx.lineTo(x, y);
+                //     ctx.lineWidth = 10;
+                //     ctx.strokeStyle = "yellow";
+                //     ctx.stroke();
+                //     setTimeout(light_wave1, 0.1);
+
+                //     lastPosX = x;
+
+                // }
+
+              }
+            // }
+
+        }
+        ctx.clearRect(20,20,1000,500);
+    </script>
+</body>
+
+</html>
