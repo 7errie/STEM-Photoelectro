@@ -7,7 +7,7 @@ import { tabObjDefault, tabObjOne, tabObjTwo, tabObjThree } from "../Data";
 const TabsLabel = tabObjDefault.tabLabel;
 
 const TabsComponent = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
 
   return (
     <TabsContainer>

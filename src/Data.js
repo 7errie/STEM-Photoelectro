@@ -30,7 +30,7 @@ export const tabObjThree = {
     id: null,
     content: null,
     buttonLabel: "Run simulation",
-    buttonLink: "http://lasercentre.apextreasure.com/",
+    buttonLink: process.env.PUBLIC_URL + "/simulation/1.html",
     imgStart: false,
     img: null,
     alt: null
