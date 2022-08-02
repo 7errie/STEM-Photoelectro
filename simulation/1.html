@@ -55,10 +55,26 @@
                 }
             }
 
+            var volt_slider = document.getElementById("volt_change_range");
+            var amp = 0;
+
+            if(volt_slider.value>=1 && volt_slider.value<25){
+                amp = 6.1;
+            } else if(volt_slider.value>=25 && volt_slider.value<50){
+                amp = 8.7;
+            } else if(volt_slider.value>=50 && volt_slider.value<75){
+                amp = 9;
+            } else if(volt_slider.value>=75 && volt_slider.value<=100){
+                amp = 13.9;
+            } else {
+                amp = 0;
+            }
+
             if(state == true){
                 light_onchange();
                 // light_wave1();
-
+                document.getElementById('amp_div').style.display = "block";
+                increaseAmp(amp);
             }
             else
                 light_offchange();
@@ -148,6 +164,8 @@
             } 
             turn_off();
 	        bubble_off();
+            clearTimeout(t);
+            increaseAmp(0);
             isFinished = true;
             setTimeout(()=>{
                 isHorizontal = true;
@@ -188,6 +206,33 @@
                 light_onchange();
             }
         }
+
+        var t, max, i;
+
+        function increaseAmp(amount) {
+            max = amount;
+            i = parseFloat(document.getElementById("amp_val").value);
+            if (amount>i){
+                t = setInterval("setIncrease()", 150);
+            } else {
+                t = setInterval("setDecrease()", 100);
+            }
+            
+        }
+
+        function setIncrease() {
+            document.getElementById("amp_val").value = parseFloat(i += 0.5).toFixed(1);
+            if(i >= parseFloat(max)) {
+                clearTimeout(t);
+            }
+        }
+
+        function setDecrease() {
+            document.getElementById("amp_val").value = parseFloat(i -= 0.5).toFixed(1);
+            if(i <= parseFloat(max)) {
+                clearTimeout(t);
+            }
+        }
     </script>
     <style>
         #canvas_div{
@@ -199,6 +244,15 @@
             margin-top: -32.8vw;
             margin-left: 54.4vw;
             z-index: 3;
+        }
+        #amp_div{
+            display: none;
+            position: absolute;
+            width:80px;
+            height:55px;
+            margin-top: -28.8vw;
+            margin-left: 62.4vw;
+            z-index: 4;
         }
         #bubble_change
         {
@@ -228,14 +282,14 @@
             width: 100%;
             top: 27.5vw;
             position: absolute;
-            left: 10.1vw;
+            left: 10vw;
             z-index: 4;
         }
         .volt_change{
             -webkit-appearance: none;  /* Override default CSS styles */
             appearance: none;
-            width: 165px; /* Full-width */
-            height: 4px; /* Specified height */
+            width: 6.6vw; /* Full-width */
+            height: 0.2vw; /* Specified height */
             background: #808080; /* Grey background */
             outline: none; /* Remove outline */
             opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -249,18 +303,20 @@
         .volt_change::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 37px;
-        height: 45px;
+        width: 1.7vw;
+        height: 1.7vw;
         border: 0;
         background: url('img/9.png');
+        background-size: contain;
         cursor: grab;
         }
 
         .volt_change::-moz-range-thumb {
-        width: 37px;
-        height: 45px;
+        width: 1.7vw;
+        height: 1.7vw;
         border: 0;
         background: url('img/9.png');
+        background-size: contain;
         cursor: grab;
         }
 	    @media screen and (min-width: 1281px){
@@ -414,10 +470,13 @@
         <img src="img/8.png" class="microscopic" id="microscopic4" style="display:none;" onclick="vid_show(4)">
         <img src="img/8.png" class="microscopic" id="microscopic5" style="display:none;" onclick="vid_show(5)">
         <div class="volt_change_div">
-            <input type="range" min="1" max="100" value="50" class="volt_change" id="volt_change_range" oninput="onVoltChange(this.value)">
+            <input type="range" min="1" max="100" value="35" class="volt_change" id="volt_change_range" oninput="onVoltChange(this.value)">
         </div>
         <div id="canvas_div" style="">
             <canvas id="canvas" width='4000' height='1000' style="height: 1000px;width: 4000px;position: absolute;">
+        </div>
+        <div id="amp_div" style="">
+            <input id="amp_val" type="text" value="0" size="3" style="border: none; color: yellow; background-color: transparent;" />
         </div>
         <div id="vid_div_back" style="display:none;" onclick="vid_show(0)">
         </div>
@@ -543,6 +602,8 @@
 
             var leftPos = 0
 
+            var loop = 1;
+
             function light_wave1(){
               if(isFinished) {                
                     //console.log('isFinished')
@@ -654,32 +715,12 @@
               }
             // }
 
-            ctx.save();
-            ctx.fillStyle = 'yellow';
+            
+            while (loop>0){
+                
 
-            // text specific styles
-            ctx.font = '22px Times New Roman';
-            ctx.textAlign = 'center';
-
-            var volt_slider = document.getElementById("volt_change_range");
-            var amp = 0;
-
-            if(volt_slider.value>=1 && volt_slider.value<25){
-                amp = 6.1;
-            } else if(volt_slider.value>=25 && volt_slider.value<50){
-                amp = 8.7;
-            } else if(volt_slider.value>=50 && volt_slider.value<75){
-                amp = 9;
-            } else if(volt_slider.value>=75 && volt_slider.value<=100){
-                amp = 13.9;
-            } else {
-                amp = 0;
+                loop --;
             }
-
-            ctx.fillText(amp, 200, 240);
-
-            ctx.restore();
-
         }
         ctx.clearRect(20,20,1000,500);
     </script>
