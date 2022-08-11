@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/stem-photoelectro/static/css/main.4f1ed81d.css",
-    "main.js": "/stem-photoelectro/static/js/main.092f1e04.js",
+    "main.css": "/stem-photoelectro/static/css/main.1258e390.css",
+    "main.js": "/stem-photoelectro/static/js/main.bc1818ed.js",
     "static/js/787.a11e83eb.chunk.js": "/stem-photoelectro/static/js/787.a11e83eb.chunk.js",
     "static/media/error-404.svg": "/stem-photoelectro/static/media/error-404.423bd38510603b284c07eac7997e3275.svg",
     "index.html": "/stem-photoelectro/index.html",
-    "main.4f1ed81d.css.map": "/stem-photoelectro/static/css/main.4f1ed81d.css.map",
-    "main.092f1e04.js.map": "/stem-photoelectro/static/js/main.092f1e04.js.map",
+    "main.1258e390.css.map": "/stem-photoelectro/static/css/main.1258e390.css.map",
+    "main.bc1818ed.js.map": "/stem-photoelectro/static/js/main.bc1818ed.js.map",
     "787.a11e83eb.chunk.js.map": "/stem-photoelectro/static/js/787.a11e83eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f1ed81d.css",
-    "static/js/main.092f1e04.js"
+    "static/css/main.1258e390.css",
+    "static/js/main.bc1818ed.js"
   ]
 }
