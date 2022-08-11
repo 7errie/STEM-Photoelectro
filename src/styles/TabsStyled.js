@@ -20,11 +20,9 @@ export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 90%;
   height: 400px;
   background: #f1f1f1;
   margin: 10px auto 0;
-  word-break: break-all;
   border: 1px solid rgba(0, 0, 0, 0.274);
 `;
 
@@ -74,6 +72,19 @@ export const TabContent = styled.div`
   display: ${(p) => (p.active ? "block" : "null")};
 `;
 
+export const ContentTag = styled.div`
+  width: 100%;
+  height: 100%;
+  word-break: normal;
+  p {
+    align: justify;
+    margin: 10px 0px;
+  }
+  ol > li {
+    margin: 20px 40px;
+  }
+`;
+
 export const SimulationTab = styled.div`
   display: flex;
   justify-content: center;
@@ -82,8 +93,13 @@ export const SimulationTab = styled.div`
 `;
 
 export const SimulationButton = styled.button`
-  background-color: ${rgba("black", 0.25)};
-  padding: 14px 28px;
-  font-size: 16px;
+  /* Adapt the colors based on primary prop */
+  background: ${(p) => (p.active ? "#5c001e" : "white")};
+  color: ${(p) => (p.active ? "white" : "#5c001e")};
   cursor: pointer;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid #5c001e;
+  border-radius: 3px;
 `;
