@@ -59,13 +59,13 @@
             var amp = 0;
 
             if(volt_slider.value>=1 && volt_slider.value<25){
-                amp = 6.1;
+                amp = 0.363;
             } else if(volt_slider.value>=25 && volt_slider.value<50){
-                amp = 8.7;
+                amp = 0.725;
             } else if(volt_slider.value>=50 && volt_slider.value<75){
-                amp = 9;
+                amp = 1.088;
             } else if(volt_slider.value>=75 && volt_slider.value<=100){
-                amp = 13.9;
+                amp = 1.450;
             } else {
                 amp = 0;
             }
@@ -213,22 +213,22 @@
             max = amount;
             i = parseFloat(document.getElementById("amp_val").value);
             if (amount>i){
-                t = setInterval("setIncrease()", 150);
+                t = setInterval("setIncrease()", 800);
             } else {
-                t = setInterval("setDecrease()", 100);
+                t = setInterval("setDecrease()", 600);
             }
             
         }
 
         function setIncrease() {
-            document.getElementById("amp_val").value = parseFloat(i += 0.5).toFixed(1);
+            document.getElementById("amp_val").value = parseFloat(i += 0.01).toFixed(1);
             if(i >= parseFloat(max)) {
                 clearTimeout(t);
             }
         }
 
         function setDecrease() {
-            document.getElementById("amp_val").value = parseFloat(i -= 0.5).toFixed(1);
+            document.getElementById("amp_val").value = parseFloat(i -= 0.01).toFixed(1);
             if(i <= parseFloat(max)) {
                 clearTimeout(t);
             }
