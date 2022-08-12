@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import ReactSlider from "react-slider";
 import {
-  TabContentContainer, ItemContainer, FormItem, ButtonNext, ButtonPrev
+  TabContentContainer, ItemContainer, FormItem, ImageFirst, ButtonNext, ButtonPrev, ButtonDiv
 } from "../styles/TabFirstStyled";
-import {
-  ContentTag
-} from "../styles/TabsStyled";
+import { ContentTag } from "../styles/TabsStyled";
+import Diagram from "../components/DiagramFirst";
 import { tabObjOne } from "../Data";
 import "../styles/SliderStyles.css";
 
-const Steps = tabObjOne.title;
-
-const StepContent = tabObjOne.content;
+const stepContent = tabObjOne.content;
 
 const TabContent = () => {
 
@@ -20,7 +17,7 @@ const TabContent = () => {
   });
 
   const onNext = () => {
-    if (active.value <= Steps.length)
+    if (active.value <= stepContent.length)
       setActive({ ...active, value: active.value + 1 });
   };
 
@@ -30,9 +27,7 @@ const TabContent = () => {
   };
 
   const onChange = (index) => {
-    if (index + 1 == Steps.length)
-      index += 1;
-    setActive({ ...active, value: index - 1 });
+    setActive({ ...active, value: index });
   };
 
   return (
@@ -40,16 +35,24 @@ const TabContent = () => {
       <>
         <ItemContainer>
           <>
-            {Steps.map((step, index) => {
+            {stepContent.map((step, index) => {
               return (
                 <FormItem active={active.value === index} key={index}>
-                  <ContentTag dangerouslySetInnerHTML={{__html:StepContent[index]}} />
-                  <ButtonNext index={index - 1} onClick={onNext}>
-                    Next
-                  </ButtonNext>
-                  <ButtonPrev index={index - 1} onClick={onPrevious}>
-                    Previous
-                  </ButtonPrev>
+                  <ContentTag dangerouslySetInnerHTML={{__html:stepContent[index]}} />
+                  {index == 7 ?
+                    <Diagram />
+                  : index == 1 ?
+                    <ImageFirst src={tabObjOne.img} />
+                  : null}
+                  <ButtonDiv>
+                    <ButtonNext index={index - 1} onClick={onNext}>
+                      Next
+                    </ButtonNext>
+                    <ButtonPrev index={index - 1} onClick={onPrevious}>
+                      Previous
+                    </ButtonPrev>
+                  </ButtonDiv>
+                  
                 </FormItem>
               );
             })}
@@ -60,7 +63,7 @@ const TabContent = () => {
             marks
             onChange={onChange}
             min={0}
-            max={Steps.length - 1}
+            max={stepContent.length - 1}
             value={active.value}
             markClassName="mark"
             trackClassName="slider-track"

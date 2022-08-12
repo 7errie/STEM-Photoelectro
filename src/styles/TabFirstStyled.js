@@ -20,6 +20,18 @@ export const FormItem = styled.div`
   display: ${(props) => (props.active ? "block" : "none")};
 `;
 
+export const ImageFirst = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+  max-height: 50%;
+`;
+
+export const ButtonDiv = styled.div`
+  width: 100%;
+`;
+
 export const ButtonNext = styled.button`
   display: ${(props) => (props.index < 6 ? "inline-block" : "none")};
   background: white;

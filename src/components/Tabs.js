@@ -5,7 +5,7 @@ import {
 import { tabObjDefault, tabObjOne, tabObjTwo, tabObjThree } from "../Data";
 import TabFirst from "../components/TabFirst";
 
-const TabsLabel = tabObjDefault.tabLabel;
+const tabsLabel = tabObjDefault.tabLabel;
 
 const TabsComponent = () => {
   const [active, setActive] = useState(0);
@@ -13,7 +13,7 @@ const TabsComponent = () => {
   return (
     <TabsContainer>
         <TabsRow>
-          {TabsLabel.map((tab, index) => (
+          {tabsLabel.map((tab, index) => (
             <Button active={active === index} onClick={() => setActive(index)} key={index}>
               {tab}
             </Button>
