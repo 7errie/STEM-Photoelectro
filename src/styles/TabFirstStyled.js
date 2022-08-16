@@ -11,29 +11,38 @@ export const TabContentContainer = styled.div`
 export const ItemContainer = styled.div`
   background-color: #fff;
   width: 100%;
+  height: 530px;
   padding: 20px;
   border-radius: 10px;
 `;
 
 
 export const FormItem = styled.div`
-  display: ${(props) => (props.active ? "block" : "none")};
+  display: ${(props) => (props.active ? "flex" : "none")};
+`;
+
+export const ContentDiv = styled.div`
+  height: 100%;
 `;
 
 export const ImageFirst = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 50%;
-  max-height: 50%;
+  max-width: 35%;
+  max-height: auto;
 `;
 
 export const ButtonDiv = styled.div`
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
   width: 100%;
 `;
 
 export const ButtonNext = styled.button`
   display: ${(props) => (props.index < 6 ? "inline-block" : "none")};
+  float: right;
   background: white;
   color: #5c001e;
   cursor: pointer;
@@ -46,6 +55,7 @@ export const ButtonNext = styled.button`
 
 export const ButtonPrev = styled.button`
   display: ${(props) => (props.index >= 0 ? "inline-block" : "none")};
+  float: right;
   background: white;
   color: #5c001e;
   cursor: pointer;

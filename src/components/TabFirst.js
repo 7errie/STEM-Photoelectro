@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactSlider from "react-slider";
 import {
-  TabContentContainer, ItemContainer, FormItem, ImageFirst, ButtonNext, ButtonPrev, ButtonDiv
+  TabContentContainer, ItemContainer, FormItem, ContentDiv, ImageFirst, ButtonNext, ButtonPrev, ButtonDiv
 } from "../styles/TabFirstStyled";
 import { ContentTag } from "../styles/TabsStyled";
 import Diagram from "../components/DiagramFirst";
@@ -38,12 +38,14 @@ const TabContent = () => {
             {stepContent.map((step, index) => {
               return (
                 <FormItem active={active.value === index} key={index}>
-                  <ContentTag dangerouslySetInnerHTML={{__html:stepContent[index]}} />
-                  {index == 7 ?
-                    <Diagram />
-                  : index == 1 ?
-                    <ImageFirst src={tabObjOne.img} />
-                  : null}
+                  <ContentDiv>
+                    <ContentTag dangerouslySetInnerHTML={{__html:stepContent[index]}} />
+                    {index == 7 ?
+                      <Diagram />
+                    : index == 1 ?
+                      <ImageFirst src={tabObjOne.img} />
+                    : null}
+                  </ContentDiv>
                   <ButtonDiv>
                     <ButtonNext index={index - 1} onClick={onNext}>
                       Next
@@ -52,7 +54,6 @@ const TabContent = () => {
                       Previous
                     </ButtonPrev>
                   </ButtonDiv>
-                  
                 </FormItem>
               );
             })}
