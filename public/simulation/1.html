@@ -178,10 +178,8 @@
 
                 if(count >= 1){
                     count --;
-                    console.log(count + " = " +img_array[count]);
                     light_id.src = img_array[count];
                     setTimeout(turn_off, 400/4);
-
                 }  
 
             }
@@ -191,7 +189,6 @@
                     i --;   
 		            bubble_id.src = bubble_array[i];
                     b_off  = setTimeout(bubble_off, 20000/2);
-
                 }		
 
             }
@@ -213,24 +210,24 @@
             max = amount;
             i = parseFloat(document.getElementById("amp_val").value);
             if (amount>i){
-                t = setInterval("setIncrease()", 800);
+                t = setInterval("setIncrease()", 20);
             } else {
-                t = setInterval("setDecrease()", 600);
+                t = setInterval("setDecrease()", 10);
             }
             
         }
 
         function setIncrease() {
-            document.getElementById("amp_val").value = parseFloat(i += 0.01).toFixed(1);
-            if(i >= parseFloat(max)) {
+            document.getElementById("amp_val").value = i <= (max - 0.01) ? parseFloat(i += 0.01).toFixed(3) : parseFloat(i += 0.001).toFixed(3);
+            if(i >= parseFloat(max))
                 clearTimeout(t);
-            }
         }
 
         function setDecrease() {
-            document.getElementById("amp_val").value = parseFloat(i -= 0.01).toFixed(1);
+            document.getElementById("amp_val").value = i >= (max - 0.01) ? parseFloat(i -= 0.01).toFixed(3) : parseFloat(i -= 0.001).toFixed(3);
             if(i <= parseFloat(max)) {
                 clearTimeout(t);
+                document.getElementById("amp_val").value = parseFloat(0).toFixed(3);
             }
         }
     </script>
@@ -248,7 +245,7 @@
         #amp_div{
             display: none;
             position: absolute;
-            width:80px;
+            width:120px;
             height:55px;
             margin-top: -28.8vw;
             margin-left: 62.4vw;
@@ -476,7 +473,8 @@
             <canvas id="canvas" width='4000' height='1000' style="height: 1000px;width: 4000px;position: absolute;">
         </div>
         <div id="amp_div" style="">
-            <input id="amp_val" type="text" value="0" size="3" style="border: none; color: yellow; background-color: transparent;" />
+            <input id="amp_val" type="text" value="0" size="1" style="border: none; color: yellow; background-color: transparent;" />
+            <input type="text" value="V" size="1" style="border: none; color: yellow; background-color: transparent;" />
         </div>
         <div id="vid_div_back" style="display:none;" onclick="vid_show(0)">
         </div>

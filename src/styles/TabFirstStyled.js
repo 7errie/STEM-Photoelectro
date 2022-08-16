@@ -1,16 +1,18 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const TabContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   position: relative;
   margin: 10px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.274);
 `;
 
-export const ItemContainer = styled.div`
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   width: 100%;
+  height: 440px;
+  overflow: auto;
   padding: 20px;
   border-radius: 10px;
 `;

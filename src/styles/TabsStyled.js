@@ -73,15 +73,20 @@ export const TabContent = styled.div`
 `;
 
 export const ContentTag = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
   word-break: normal;
   p {
-    align: justify;
+    color: #3a3b3c;
     margin: 10px 0px;
   }
   ol > li {
     margin: 20px 40px;
+  }
+  span {
+    color: #0000aa;
+    font-weight: bold;
   }
 `;
 

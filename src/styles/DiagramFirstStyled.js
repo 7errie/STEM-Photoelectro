@@ -9,12 +9,10 @@ export const DiagramContainer = styled.div`
 
 export const RowFirst = styled.div`
   display: flex;
-  justifyContent: space-between;
 `;
 
 export const RowSecond = styled.div`
   display: flex;
-  justifyContent: space-between;
   margin: 100px 0px 0px 40px;
 `;
 
