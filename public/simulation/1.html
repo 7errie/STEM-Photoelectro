@@ -57,24 +57,30 @@
 
             var volt_slider = document.getElementById("volt_change_range");
             var amp = 0;
+            var volt = 0;
 
             if(volt_slider.value>=1 && volt_slider.value<25){
-                amp = 0.363;
+                amp = 0.013;
+                volt = 0.363;
             } else if(volt_slider.value>=25 && volt_slider.value<50){
-                amp = 0.725;
+                amp = 0.125;
+                volt = 0.725;
             } else if(volt_slider.value>=50 && volt_slider.value<75){
-                amp = 1.088;
+                amp = 0.255;
+                volt = 1.088;
             } else if(volt_slider.value>=75 && volt_slider.value<=100){
-                amp = 1.450;
+                amp = 0.313;
+                volt = 1.450;
             } else {
                 amp = 0;
+                volt = 0;
             }
 
             if(state == true){
                 light_onchange();
                 // light_wave1();
-                document.getElementById('amp_div').style.display = "block";
-                increaseAmp(amp);
+                document.getElementById('charge_div').style.display = "block";
+                increaseCharge(amp, volt);
             }
             else
                 light_offchange();
@@ -165,7 +171,7 @@
             turn_off();
 	        bubble_off();
             clearTimeout(t);
-            increaseAmp(0);
+            increaseCharge(0, 0);
             isFinished = true;
             setTimeout(()=>{
                 isHorizontal = true;
@@ -204,30 +210,51 @@
             }
         }
 
-        var t, max, i;
+        var t, t2, max, max2, i, v;
 
-        function increaseAmp(amount) {
+        function increaseCharge(amount, amount2) {
             max = amount;
+            max2 = amount2;
             i = parseFloat(document.getElementById("amp_val").value);
+            v = parseFloat(document.getElementById("volt_val").value);
             if (amount>i){
-                t = setInterval("setIncrease()", 20);
+                t = setInterval("setIncreaseAmp()", 20);
             } else {
-                t = setInterval("setDecrease()", 10);
+                t = setInterval("setDecreaseAmp()", 10);
+            }
+            if (amount2>v){
+                t2 = setInterval("setIncreaseVolt()", 10);
+            } else {
+                t2 = setInterval("setDecreaseVolt()", 10);
             }
             
         }
 
-        function setIncrease() {
+        function setIncreaseAmp() {
             document.getElementById("amp_val").value = i <= (max - 0.01) ? parseFloat(i += 0.01).toFixed(3) : parseFloat(i += 0.001).toFixed(3);
             if(i >= parseFloat(max))
                 clearTimeout(t);
         }
 
-        function setDecrease() {
+        function setDecreaseAmp() {
             document.getElementById("amp_val").value = i >= (max - 0.01) ? parseFloat(i -= 0.01).toFixed(3) : parseFloat(i -= 0.001).toFixed(3);
             if(i <= parseFloat(max)) {
                 clearTimeout(t);
                 document.getElementById("amp_val").value = parseFloat(0).toFixed(3);
+            }
+        }
+
+        function setIncreaseVolt() {
+            document.getElementById("volt_val").value = v <= (max2 - 0.01) ? parseFloat(v += 0.05).toFixed(3) : parseFloat(v += 0.001).toFixed(3);
+            if(v >= parseFloat(max2))
+                clearTimeout(t2);
+        }
+
+        function setDecreaseVolt() {
+            document.getElementById("volt_val").value = v >= (max2 - 0.01) ? parseFloat(v -= 0.01).toFixed(3) : parseFloat(v -= 0.001).toFixed(3);
+            if(v <= parseFloat(max2)) {
+                clearTimeout(t2);
+                document.getElementById("volt_val").value = parseFloat(0).toFixed(3);
             }
         }
     </script>
@@ -236,20 +263,26 @@
             position: absolute;
             overflow: hidden;transform: rotate(2.6deg);
             background-color: #00000003;
-            width:225px;
+            width:220px;
             height:500px;
-            margin-top: -32.8vw;
+            margin-top: -33vw;
             margin-left: 54.4vw;
             z-index: 3;
         }
-        #amp_div{
+        #charge_div{
             display: none;
             position: absolute;
             width:120px;
             height:55px;
-            margin-top: -28.8vw;
+            margin-top: -24.8vw;
             margin-left: 62.4vw;
+            font-size: smaller;
             z-index: 4;
+            -webkit-transform: rotate(2.6deg); 
+            -moz-transform: rotate(2.6deg); 
+            -ms-transform: rotate(2.6deg); 
+            -o-transform: rotate(2.6deg); 
+            transform: rotate(2.6deg);
         }
         #bubble_change
         {
@@ -279,7 +312,7 @@
             width: 100%;
             top: 27.5vw;
             position: absolute;
-            left: 10vw;
+            left: 10.5vw;
             z-index: 4;
         }
         .volt_change{
@@ -472,8 +505,10 @@
         <div id="canvas_div" style="">
             <canvas id="canvas" width='4000' height='1000' style="height: 1000px;width: 4000px;position: absolute;">
         </div>
-        <div id="amp_div" style="">
+        <div id="charge_div" style="">
             <input id="amp_val" type="text" value="0" size="1" style="border: none; color: yellow; background-color: transparent;" />
+            <input type="text" value="mA" size="1" style="border: none; color: yellow; background-color: transparent;" />
+            <input id="volt_val" type="text" value="0" size="1" style="border: none; color: yellow; background-color: transparent;" />
             <input type="text" value="V" size="1" style="border: none; color: yellow; background-color: transparent;" />
         </div>
         <div id="vid_div_back" style="display:none;" onclick="vid_show(0)">
@@ -598,11 +633,23 @@
             var lastPosX = 0;
             var lastPostY = 180;
 
-            var leftPos = 0
+            var leftPos = 0;
 
-            var loop = 1;
+            var volt_slider = document.getElementById("volt_change_range");
+            var maxPosX = 0;
 
             function light_wave1(){
+                if(volt_slider.value>=1 && volt_slider.value<25){
+                    maxPosX = 20;
+                } else if(volt_slider.value>=25 && volt_slider.value<50){
+                    maxPosX = 30;
+                } else if(volt_slider.value>=50 && volt_slider.value<75){
+                    maxPosX = 40;
+                } else if(volt_slider.value>=75 && volt_slider.value<=100){
+                    maxPosX = 50;
+                } else {
+                    maxPosX = 0;
+                }
               if(isFinished) {                
                     //console.log('isFinished')
                     // if(!isHorizontal){
@@ -658,7 +705,7 @@
                         setTimeout(light_wave1, 30);
                         //console.log("x="+x);
                         // lastPosX = x;
-                    } else if(x <= lastPosX + 20) {                        
+                    } else if(x <= lastPosX + maxPosX) {                        
                         ctx.moveTo(x, y);
                         x++;
                         y += -1;
@@ -712,13 +759,6 @@
 
               }
             // }
-
-            
-            while (loop>0){
-                
-
-                loop --;
-            }
         }
         ctx.clearRect(20,20,1000,500);
     </script>
