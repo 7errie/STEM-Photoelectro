@@ -22,6 +22,11 @@ export const FormItem = styled.div`
   display: ${(props) => (props.active ? "block" : "none")};
 `;
 
+export const ImageFirstDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export const ImageFirst = styled.img`
   display: block;
   margin-left: auto;

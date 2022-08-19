@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  TabContentContainer, ContentContainer, ImageFirst
+  TabContentContainer, ContentContainer, ImageFirst, ImageFirstDiv
 } from "../styles/TabFirstStyled";
 import { ContentTag } from "../styles/TabsStyled";
 import Diagram from "../components/DiagramFirst";
@@ -16,7 +16,11 @@ const TabContent = () => {
       <>
         <ContentContainer>
           <ContentTag dangerouslySetInnerHTML={{__html:TabOneContent1}} />
-          <ImageFirst src={tabObjOne.img} />
+          <ImageFirstDiv>
+            <ImageFirst src={tabObjOne.img} />
+            <ImageFirst src={tabObjOne.img2} />
+            <ImageFirst src={tabObjOne.img3} />
+          </ImageFirstDiv>
           <ContentTag dangerouslySetInnerHTML={{__html:TabOneContent2}} />
           <Diagram />
         </ContentContainer>
