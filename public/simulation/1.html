@@ -275,7 +275,7 @@
             width:120px;
             height:55px;
             margin-top: -24.8vw;
-            margin-left: 62.4vw;
+            margin-left: 62.1vw;
             font-size: smaller;
             z-index: 4;
             -webkit-transform: rotate(2.6deg); 
@@ -283,13 +283,6 @@
             -ms-transform: rotate(2.6deg); 
             -o-transform: rotate(2.6deg); 
             transform: rotate(2.6deg);
-        }
-        #bubble_change
-        {
-            /* width: 13.8%;
-             margin-top: 11.8vw;
-             position: absolute;
-             margin-left: -77.8vw;*/
         }
         #light_change{
             height: auto;
@@ -432,7 +425,8 @@
         }
         #microscopic1{
             margin-top: 27.6vw;
-            margin-left: -74.3vw
+            margin-left: -74.3vw;
+            z-index: 5;
         }
         #microscopic2{
             margin-top: 27.6vw;
@@ -444,7 +438,8 @@
         }
         #microscopic4{
             margin-top: 24.6vw;
-            margin-left: -74.4vw
+            margin-left: -74.4vw;
+            z-index: 5;
         }
         #microscopic5{
             margin-top: 16.6vw;
@@ -475,6 +470,21 @@
             z-index: 0;
             opacity: 0.4;
         }
+        #img{
+            /*border-radius: 100%;*/
+            border: 1px solid;
+            margin-top: -100px;
+        }
+        #img_div{
+            /*display:none;*/
+            position: fixed;
+            top: -600px;
+            left: 50%;
+            width: 372px;
+            background: lightgray;
+            border-radius: 100% 14%;
+            padding-left: 100px;
+        }
         #microscopic_btn{
             position: absolute;
             top: 80%;
@@ -489,23 +499,21 @@
 </head>
 
 <body>
-    <div style=""> 
+    <div> 
         <img src="img/s.jpg" style="height: auto;width:100%; z-index: 1;">
-        <img src="img/6.png" id="light_change" style="">
-	    <img src="img/no.png" id="bubble_change" style="">
-        <img src="img/7.png" id="switch" style="" onclick="wavefunction()">
+        <img src="img/6.png" id="light_change">
+	    <img src="img/no.png" id="bubble_change">
+        <img src="img/7.png" id="switch" onclick="wavefunction()">
         <img src="img/8.png" class="microscopic" id="microscopic1" style="display:none;" onclick="vid_show(1)">
         <img src="img/8.png" class="microscopic" id="microscopic2" style="display:none;" onclick="vid_show(2)">
-        <img src="img/8.png" class="microscopic" id="microscopic3" style="display:none;" onclick="vid_show(3)">
         <img src="img/8.png" class="microscopic" id="microscopic4" style="display:none;" onclick="vid_show(4)">
-        <img src="img/8.png" class="microscopic" id="microscopic5" style="display:none;" onclick="vid_show(5)">
         <div class="volt_change_div">
             <input type="range" min="1" max="100" value="35" class="volt_change" id="volt_change_range" oninput="onVoltChange(this.value)">
         </div>
-        <div id="canvas_div" style="">
+        <div id="canvas_div">
             <canvas id="canvas" width='4000' height='1000' style="height: 1000px;width: 4000px;position: absolute;">
         </div>
-        <div id="charge_div" style="">
+        <div id="charge_div">
             <input id="amp_val" type="text" value="0" size="1" style="border: none; color: yellow; background-color: transparent;" />
             <input type="text" value="mA" size="1" style="border: none; color: yellow; background-color: transparent;" />
             <input id="volt_val" type="text" value="0" size="1" style="border: none; color: yellow; background-color: transparent;" />
@@ -514,17 +522,22 @@
         <div id="vid_div_back" style="display:none;" onclick="vid_show(0)">
         </div>
         <div id="vid_div" style="display:none;" >
-            <video id="vid" width="400" height="400" src="img/movie.mp4" type="video/mp4" loop autoplay muted controls>
+            <video id="vid" width="403" height="226" src="img/movie.mp4" type="video/mp4" loop autoplay muted controls>
                 <!-- <source src="img/movie.mp4" type="video/mp4"> -->
                 <!-- <source src="img/movie.ogg" type="video/ogg"> -->
                 <!-- Your browser does not support the video tag. -->
             </video>
+        </div>
+        <div id="img_div" style="display:none;" >
+            <img id="img" width="400" height="400" src="img/img1.jpeg" style="visibility: hidden;" />
         </div>
         <button type="button" id="microscopic_btn" onclick="microscopic_btn()">Microscopic View</button>
       </div>
     <script type="text/javascript">
     let vid = document.getElementById("vid");
     let vid_div = document.getElementById("vid_div");
+    let img = document.getElementById("img");
+    let img_div = document.getElementById("img_div");
     let vid_div_back = document.getElementById("vid_div_back");
     function microscopic_btn(){
         console.log('hitting');
@@ -551,25 +564,20 @@
         let btn_el=el>0?document.getElementById('microscopic'+el).getBoundingClientRect():'';
         // document.getElementById('microscopic1').getBoundingClientRect().left
 
-        if (vid_div.style.display === "none") {
-            vid_div.style.display = "block";
-            vid_div_back.style.display = "block";
-        } else {
-            vid_div.style.display = "none";
-            vid_div_back.style.display = "none";
-        }
         if(el==0){
-            vid_div.style.top='0px';//'-600px';
-            vid_div.style.left='50%';
-            vid_div.style.borderRadius ='100% 14%';
-            vid_div.style.height='unset';
-            // vid_div.getElementsByTagName('source')[0].src = "img/movie.mp4";
-            vid.src = "img/movie.mp4";
-            vid.load();
-            vid.play();
+            vid_div.style.display = "none";
+            img_div.style.display = "none";
+            vid_div_back.style.display = "none";
             // vid_div.getElementsByTagName('source')[1].src = "img/movie.ogg";
         }
         else if(el==1){
+            if (vid_div.style.display === "none") {
+                vid_div.style.display = "block";
+                vid_div_back.style.display = "block";
+            } else {
+                vid_div.style.display = "none";
+                vid_div_back.style.display = "none";
+            }
             // console.log(el, document.getElementById('microscopic'+el).getBoundingClientRect().left);
             vid_div.style.top=(btn_el.top-vid_div.offsetHeight+btn_el.height)+'px';//'-600px';
             vid_div.style.left=btn_el.left+'px';//'25%';
@@ -580,6 +588,13 @@
             // vid_div.getElementsByTagName('source')[1].src = "img/movie1.ogg";
         }
         else if(el==2){
+            if (vid_div.style.display === "none") {
+                vid_div.style.display = "block";
+                vid_div_back.style.display = "block";
+            } else {
+                vid_div.style.display = "none";
+                vid_div_back.style.display = "none";
+            }
             vid_div.style.top=(btn_el.top-vid_div.offsetHeight+btn_el.height)+'px';//'-600px';
             vid_div.style.left=btn_el.left+'px';//'34%';
             // vid_div.getElementsByTagName('source')[0].src = "img/movie2.mp4";
@@ -597,14 +612,17 @@
             vid.play();
         }
         else if(el==4){
-            vid_div.style.height='200px';
-            vid_div.style.borderRadius ='50% 50%';
-            vid_div.style.top=(btn_el.top-100)+'px';//'-575px';
-            vid_div.style.left=(btn_el.left+btn_el.width)+'px';//'38%';
-            // vid_div.getElementsByTagName('source')[0].src = "img/movie4.mp4";
-            vid.src = "img/movie4.mp4";
-            vid.load();
-            vid.play();
+            if (img_div.style.display === "none") {
+                img_div.style.display = "block";
+                vid_div_back.style.display = "block";
+            } else {
+                img_div.style.display = "none";
+            }
+            img_div.style.top=(btn_el.top-img_div.offsetHeight+btn_el.height)+'px';//'-600px';
+            img_div.style.left=btn_el.left+'px';//'34%';
+            // vid_div.getElementsByTagName('source')[0].src = "img/movie2.mp4";
+            img.src = "img/img1.jpeg";
+            img.style.visibility = "visible";
         }
         else if(el==5){
             vid_div.style.height='200px';
