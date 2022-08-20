@@ -30,10 +30,20 @@ const TabContent = () => {
     setActive({ ...active, value: index });
   };
 
+  const handleScrolling = (scroll) => {
+    console.log(active);
+    if (active.value >= 0 && active.value < 7) {
+      if (scroll.nativeEvent.wheelDelta > 0)
+        setActive({ ...active, value: active.value - 1 });
+      else
+      setActive({ ...active, value: active.value + 1 });
+    }
+  };
+
   return (
     <TabContentContainer>
       <>
-        <ItemContainer>
+        <ItemContainer onWheel={handleScrolling}>
           <>
             {stepContent.map((step, index) => {
               return (

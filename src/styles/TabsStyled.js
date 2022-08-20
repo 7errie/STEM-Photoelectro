@@ -77,7 +77,6 @@ export const ContentTag = styled.div`
   height: 100%;
   word-break: normal;
   p {
-    align: justify;
     margin: 10px 0px;
   }
   ol > li {
