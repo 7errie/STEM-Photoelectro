@@ -20,29 +20,16 @@ export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 400px;
-  background: #f1f1f1;
+  background-image: radial-gradient(#5c001e 2px, transparent 2px), radial-gradient(#5c001e 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-position: 0 0, 60px 60px;
+  background-color: #fef9f1;
   margin: 10px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.274);
 `;
 
 export const TabsRow = styled.div`
   display: flex;
-`;
-
-export const transition = css`
-  transition: transform 0.45s;
-`;
-
-export const Underline = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0%;
-  width: 33.33%;
-  height: 4px;
-  background: #F9F871;
-  transform: translateX(${(p) => (p.active === 0 ? 0 : p.active * 100)}%);
-  ${transition}
 `;
 
 export const Button = styled.button`
@@ -65,7 +52,7 @@ export const Content = styled.div`
 `;
 
 export const TabContent = styled.div`
-  background: white;
+  background: ${rgba("white", 0.85)};
   padding: 20px;
   width: 100%;
   height: 100%;
