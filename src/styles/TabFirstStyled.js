@@ -11,7 +11,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   background: ${rgba("white", 0.15)};
   width: 100%;
-  height: 440px;
+  height: 100%;
   overflow: auto;
   padding: 20px;
   border-radius: 10px;

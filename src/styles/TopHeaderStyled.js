@@ -9,7 +9,6 @@ export const HeaderDiv = styled.nav`
   align-items: center;
   font-size: 12px;
   line-height: 1em;
-  position: sticky;
   top: 0;
   z-index: 10;
 

@@ -9,7 +9,7 @@ export const Tab = styled.div`
   font-size: 1rem;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 12;
 
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
@@ -30,9 +30,15 @@ export const TabsContainer = styled.div`
 
 export const TabsRow = styled.div`
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 12;
 `;
 
 export const Button = styled.button`
+  position: sticky;
+  top: 0;
+  z-index: 12;
   padding: 15px;
   text-align: center;
   width: 50%;
