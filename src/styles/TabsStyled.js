@@ -7,8 +7,6 @@ export const Tab = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  position: sticky;
-  top: 0;
   z-index: 12;
 
   @media screen and (max-width: 960px) {
@@ -19,11 +17,10 @@ export const Tab = styled.div`
 export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
-  background-image: radial-gradient(#5c001e 2px, transparent 2px), radial-gradient(#5c001e 2px, transparent 2px);
-  background-size: 20px 20px;
-  background-position: 0 0, 60px 60px;
-  background-color: #fef9f1;
+  position: absolute;
+  top: 290px;
+  left: 10%;
+  width: 80%;
   margin: 10px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.274);
 `;
@@ -39,11 +36,11 @@ export const Button = styled.button`
   position: sticky;
   top: 0;
   z-index: 12;
-  padding: 15px;
+  padding: 19px;
   text-align: center;
   width: 50%;
-  background: ${(p) => (p.active === true ? rgba("white", 0.85) : rgba("#5c001e", 1))};
-  color: ${(p) => (p.active === true ? rgba("black", 0.85) : rgba("white", 0.85))};
+  background: ${(p) => (p.active === true ? rgba("white", 0.95) : rgba("#5c001e", 1))};
+  color: ${(p) => (p.active === true ? rgba("black", 0.85) : rgba("white", 0.95))};
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
