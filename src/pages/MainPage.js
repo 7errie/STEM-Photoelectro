@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopHeader from "../components/TopHeader";
+// import TopHeader from "../components/TopHeader";
 import Tabs from "../components/Tabs";
 import Banner from "../components/Banner";
 
@@ -16,7 +16,7 @@ const Main = () => {
 
   return (
     <>
-      <TopHeader toggle={toggle} />
+      {/* <TopHeader toggle={toggle} /> */}
       <Banner />
       <Tabs active={active} setActive={setActive} />
     </>

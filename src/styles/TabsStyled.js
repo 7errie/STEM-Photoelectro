@@ -7,9 +7,7 @@ export const Tab = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  z-index: 12;
 
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
@@ -19,38 +17,30 @@ export const Tab = styled.div`
 export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  position: relative;
-  height: 400px;
-  background: #f1f1f1;
+  position: absolute;
+  top: 290px;
+  left: 10%;
+  width: 80%;
   margin: 10px auto 0;
   border: 1px solid rgba(0, 0, 0, 0.274);
 `;
 
 export const TabsRow = styled.div`
   display: flex;
-`;
-
-export const transition = css`
-  transition: transform 0.45s;
-`;
-
-export const Underline = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0%;
-  width: 33.33%;
-  height: 4px;
-  background: #F9F871;
-  transform: translateX(${(p) => (p.active === 0 ? 0 : p.active * 100)}%);
-  ${transition}
+  position: sticky;
+  top: 0;
+  z-index: 12;
 `;
 
 export const Button = styled.button`
-  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  padding: 19px;
   text-align: center;
   width: 50%;
-  background: ${(p) => (p.active === true ? rgba("white", 0.85) : rgba("#5c001e", 1))};
-  color: ${(p) => (p.active === true ? rgba("black", 0.85) : rgba("white", 0.85))};
+  background: ${(p) => (p.active === true ? rgba("white", 0.95) : rgba("#5c001e", 1))};
+  color: ${(p) => (p.active === true ? rgba("black", 0.85) : rgba("white", 0.95))};
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
@@ -65,7 +55,7 @@ export const Content = styled.div`
 `;
 
 export const TabContent = styled.div`
-  background: white;
+  background: ${rgba("white", 0.85)};
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -73,14 +63,20 @@ export const TabContent = styled.div`
 `;
 
 export const ContentTag = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
   word-break: normal;
   p {
+    color: #3a3b3c;
     margin: 10px 0px;
   }
   ol > li {
     margin: 20px 40px;
+  }
+  span {
+    color: #0000aa;
+    font-weight: bold;
   }
 `;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   BannerDiv,
+  BannerNav,
   BannerContainer,
   BannerText
 } from "../styles/BannerStyled";
@@ -10,9 +11,11 @@ const Banner = () => {
   return (
     <>
       <BannerDiv>
-        <BannerContainer>
-          <BannerText>iSTEM</BannerText>
-        </BannerContainer>
+        <BannerNav>
+          <BannerContainer>
+            <BannerText>Hydrogen Production: <br />Photoelectrochemical Water Splitting</BannerText>
+          </BannerContainer>
+        </BannerNav>
       </BannerDiv>
     </>
   );

@@ -9,7 +9,6 @@ export const HeaderDiv = styled.nav`
   align-items: center;
   font-size: 12px;
   line-height: 1em;
-  position: sticky;
   top: 0;
   z-index: 10;
 
@@ -34,18 +33,4 @@ export const CInfo = styled.div`
   font-family: Open Sans,Arial,sans-serif;
   font-weight: 600;
   padding-bottom: .75em;
-`;
-
-export const MobileIcon = styled.div`
-  display: none;
-
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-  }
 `;

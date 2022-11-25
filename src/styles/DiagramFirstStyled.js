@@ -17,6 +17,7 @@ export const RowSecond = styled.div`
 `;
 
 export const BoxDiv = styled.div`
+  background-color: white;
   max-width: 240px;
   padding: 10px;
   border: 1px solid black;
